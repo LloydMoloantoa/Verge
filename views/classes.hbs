@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/css/grid.css">
+<link rel="stylesheet" href="/css/section1.css" />
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/classes">Information system</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+    </div>
+  </div>
+
+<form class="d-flex" method="POST" action="/messageview" novalidate>
+    <button class="btn btn-primary align-self-center" type="submit">View Suggestions</button>
+  </form>
+
+<form class="d-flex" method="POST" action="/addClassesRoute" novalidate>
+    <button class="btn btn-primary align-self-center" type="submit">Add Classes</button>
+  </form>
+
+  <form class="d-flex" method="POST" action="/home" novalidate>
+    <button class="btn btn-primary align-self-center" type="submit">Logout</button>
+  </form>
+
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    {{#each rows}}
+    <div class="col-3">
+      <div class="card">
+        {{#if this.picture}}
+        <img class="card__image" src="data:image/png;base64,{{this.picture}}" loading="lazy" alt="Embedded Image">
+        {{else}}
+        <img class="card__image" src="/img/default.jpg" loading="lazy" alt="User Profile">
+        {{/if}}
+
+         <p class="card__about">
+          {{this.title}}
+        </p>
+
+        <p class="card__title">{{this.name}}</p>
+       
+        <div class="row">
+          <a href="/viewLessons/{{this.id}}" type="button" class="btn btn-primary">More</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
